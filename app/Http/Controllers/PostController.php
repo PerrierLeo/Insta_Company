@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\post;
 
 class PostController extends Controller
 {
@@ -24,11 +25,17 @@ class PostController extends Controller
         ]);
         $imagePath = request('image')->store('uploads', 'public');
 
+
+
         auth()->user()->posts()->create([
             'caption' => $data['caption'],
             'image' => $imagePath
         ]);
 
         return redirect()->route('profiles.show', ['user' => auth()->user()]);
+    }
+    public function show(post $post)
+    {
+        return view('posts.show', compact('post'));
     }
 }

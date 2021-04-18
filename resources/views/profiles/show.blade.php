@@ -10,6 +10,7 @@
                 <div class="h3 pr-5"><strong>#{{$user->username}}</strong></h2></div>
                 <button class='btn btn-primary sm'>contacter</button>
             </div>
+            <a href='{{ route('profiles.edit', $user->username)}}' class='btn btn-outline-primary mt-3'>Modifier mes informations</a>
             <div class='mt-3'>
                 <div class='h5 font-weight-bold'>{{$user->posts->count()}} Projet(s)</div>
                 <div class='h5 font-weight-bold'>{{$user->profile->title}}</div>
@@ -21,7 +22,9 @@
     <div class="row mt-5">
         @foreach ($user->posts as $post)
         <div class="col-6 mt-4">
-            <img class='w-100 h-100' src="{{ asset('storage') . '/' .$post->image}}">
+            <a href="{{route('posts.show', [ 'post' => $post->id])}}">
+                <img class='w-100 h-100' src="{{ asset('storage') . '/' .$post->image}}">
+            </a>
         </div>
 
         @endforeach
