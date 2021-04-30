@@ -7,10 +7,15 @@
         </div>
         <div class="col-8 pt-5">
             <div class="d-flex align-items-baseline">
-                <div class="h3 pr-5"><strong>#{{$user->username}}</strong></h2></div>
+                <div class="h3 pr-5"><strong>#{{ $user->username}}</strong></h2></div>
                 <button class='btn btn-primary sm'>contacter</button>
             </div>
+
+            <!-- pour limiter l'affichage seulement pour l'utilisateur concerné -->
+            @can('update', $user->profile)
             <a href='{{ route('profiles.edit', $user->username)}}' class='btn btn-outline-primary mt-3'>Modifier mes informations</a>
+            @endcan
+
             <div class='mt-3'>
                 <div class='h5 font-weight-bold'>{{$user->posts->count()}} Projet(s)</div>
                 <div class='h5 font-weight-bold'>{{$user->profile->title}}</div>
