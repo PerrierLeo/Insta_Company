@@ -30,8 +30,19 @@ class ProfileController extends Controller
         $data =  request()->validate([
             'title' => 'required',
             'description' => 'required',
-            'link' => 'required|url'
+            'link' => 'required|url',
+            'image' => 'sometimes|image|max:3000'
+
         ]);
+        // merge fusionne deux tableaux
+        if (request('image')) {
+            $imagePath = request('image')->store('avatar', 'public');
+            auth()->user()->profile->update(array_merge(
+                $data,
+                ['image' => $imagePath]
+            ));
+        }
+
         auth()->user()->profile->update($data);
 
         return redirect()->route('profiles.show', ['user' => $user]);

@@ -23,8 +23,9 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src='{{ asset('Pictures/logo.svg')}}'>
+                <a class="navbar-brand d-flex" href="{{ url('/') }}">
+                    <img width='30px' height ='30px'src='{{ asset('Pictures/logoinsta.png')}}'>
+                    <h3> InstaCo</h3>
 
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

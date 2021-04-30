@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-4 text-center">
-            <img class='rounded-circle' src="{{ asset('pictures/logo_small_icon_only.png')}}">
+            <img class='rounded-circle' src="{{ $user->profile->getimage()}}" class='w-100'>
         </div>
         <div class="col-8 pt-5">
             <div class="d-flex align-items-baseline">
@@ -20,7 +20,7 @@
                 <div class='h5 font-weight-bold'>{{$user->posts->count()}} Projet(s)</div>
                 <div class='h5 font-weight-bold'>{{$user->profile->title}}</div>
                 <div class='h6'>{{$user->profile->description}}</div>
-                <div class='h6'><a href='{{$user->profile->link}}'> <img  src='{{asset('Pictures/github.svg')}}'></div>
+                <div class='h6'><a href='{{$user->profile->link}}'> {{$user->profile->link}}</div>
             </div>
         </div>
     </div>
